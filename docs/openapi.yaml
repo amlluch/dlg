@@ -1,0 +1,83 @@
+openapi: "3.0.2"
+info:
+  version: 1.0.0
+  title: dlg exercice
+  contact:
+    name: Alfonso Martinez lluch
+    email: amlluch@gmail.com
+
+paths:
+  /total:
+    get:
+      summary: add all elements from list
+      operationId: getSum
+      parameters:
+        - in: query
+          name: list
+          required: false
+          allowEmptyValue: false
+          schema:
+            type: array
+            items:
+              description: numbers to add
+              type: integer
+              format: int32
+              minimum: 0
+              maximum: 10000000
+
+      requestBody:
+        description: List of numbers
+        required: false
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                description: numbers to add
+                type: integer
+                format: int32
+                minimum: 0
+                maximum: 10000000
+            example:
+              - 0
+              - 2
+              - 6
+
+      responses:
+        '200':
+          description: result
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/total"
+              example:
+                total:
+                  8
+        '400':
+          description: Invalid input
+          content:
+            text/plain :
+              schema:
+                type: string
+              examples:
+                empty list:
+                  value: Invalid input. Empty list.
+                no data:
+                  value: Invalid input. No input data.
+                no list:
+                  value: Invalid input. It must be a list
+
+        '416':
+          description: Input data out of range
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: Some value(s) in the list out of range
+components:
+  schemas:
+    total:
+      type: object
+      properties:
+        total:
+          type: integer

@@ -33,9 +33,9 @@ class TestDlg(flask_testing.TestCase):
             resp_querystring = c.get(f'/total?list={empty_list}')
             resp_body_param = c.get('/total', data=empty_list)
         self.assertEqual(resp_querystring.status_code, 400)
-        self.assertEqual(resp_querystring.data, b'Invalid input.')
+        self.assertEqual(resp_querystring.data, b'Invalid input. Empty list.')
         self.assertEqual(resp_body_param.status_code, 400)
-        self.assertEqual(resp_body_param.data, b'Invalid input.')
+        self.assertEqual(resp_body_param.data, b'Invalid input. Empty list.')
 
     def test_big_list(self) -> None:
         big_list = str(list(range(10000001)))
