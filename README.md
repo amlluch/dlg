@@ -56,6 +56,11 @@ curl --location --request GET 'http://127.0.0.1:5000/total?list=[0,1,2,3,4]' \
 ```
 In this case the response will be: ```{"total": 10}```
 
+The reason why I have added these two options is because I don't have information about the process that makes 
+the requests. Of course it is not the best idea to be able to send data from two different sources since this 
+can produce errors.  As this is an exercise, it is a small demonstration that it is possible and depending on which 
+process is sending the data, one of the two options should be eliminated.
+
 # Error codes
 
 ### 200
