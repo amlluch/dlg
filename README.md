@@ -58,17 +58,17 @@ In this case the response will be: ```{"total": 10}```
 
 # Error codes
 
-###200
+### 200
 Everything is ok. It will send back a response with the result in json format.
 
-###400
+### 400
 Invalid input. It sends back information about the error in plain text: no data, no list or empty list. 
 Examples included on ```openapi.yaml``` file.
 
-###416
+### 416
 At least one value in the list is out of range.
 
-#Unit tests
+# Unit tests
 
 Edge cases and regular cases are included. Create a virtualenv and install dependencies (```pip install requirements.txt```)
 and run tests on your favourite IDE or by running ```python tests/test_app.py```
