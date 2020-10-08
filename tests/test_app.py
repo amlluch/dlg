@@ -6,12 +6,7 @@ from app import app
 class TestDlg(flask_testing.TestCase):
 
     def setUp(self) -> None:
-        self.parametrize = (
-            ("[1, 2, 3]", "[1, 2, 3, 4]", 200, 6),
-            ("[1, 2, 3, 4]", "[1, 2, 3]", 200, 10),
-            ("[1, 2, -3, 4]", "[1, 2, 3]", 416, None),
-            ("[1, 2, 3, 4]", "[1, -2, 3]", 200, 10),
-        )
+        ...
 
     def tearDown(self) -> None:
         ...
@@ -70,7 +65,13 @@ class TestDlg(flask_testing.TestCase):
         self.assertEqual(json_data["total"], 10)
 
     def test_different_list_in_parameter_and_querystring(self) -> None:
-        for parameters in self.parametrize:
+        fixtures = (
+            ("[1, 2, 3]", "[1, 2, 3, 4]", 200, 6),
+            ("[1, 2, 3, 4]", "[1, 2, 3]", 200, 10),
+            ("[1, 2, -3, 4]", "[1, 2, 3]", 416, None),
+            ("[1, 2, 3, 4]", "[1, -2, 3]", 200, 10),
+        )
+        for parameters in fixtures:
             with app.test_client() as c:
                 resp = c.get(f'/total?list={parameters[0]}', data=parameters[1])
             self.assertEqual(resp.status_code, parameters[2])
