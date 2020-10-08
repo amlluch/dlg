@@ -75,5 +75,5 @@ At least one value in the list is out of range.
 
 # Unit tests
 
-Edge cases and regular cases are included. Create a virtualenv and install dependencies (```pip install requirements.txt```)
+Edge cases and regular cases are included. Create a virtualenv and install dependencies (```pip install -r requirements.txt```)
 and run tests on your favourite IDE or by running ```python tests/test_app.py```
