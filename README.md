@@ -73,7 +73,15 @@ Examples included on ```openapi.yaml``` file.
 ### 416
 At least one value in the list is out of range.
 
-# Unit tests
+# Tests
 
-Edge cases and regular cases are included. Create a virtualenv and install dependencies (```pip install -r requirements.txt```)
-and run tests on your favourite IDE or by running ```python tests/test_app.py```
+Edge cases and regular cases are included in both: unittests and pytests. Create a virtualenv and install dependencies 
+(```pip install -r requirements.txt```) and run tests on your favourite IDE
+
+### Unittest
+
+  You can run unittest tests inside the docker by executing ```docker exec -it dlg_dlg_1 python tests/test_app.py```
+
+### Pytest
+
+  You can run pytest tests inside the docker by executing ```docker exec -it dlg_dlg_1 pytest tests/```

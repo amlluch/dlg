@@ -5,3 +5,5 @@ Jinja2==2.11.2
 MarkupSafe==1.1.1
 Werkzeug==1.0.1
 Flask-Testing==0.8.0
+pytest==6.1.1
+pytest-timeout==1.4.2
