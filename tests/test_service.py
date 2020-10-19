@@ -62,7 +62,7 @@ class TestRoutes:
         assert json_data["total"] == 10
 
     @pytest.mark.parametrize(
-        "query_string, body_param, status_code, message",
+        "query_string, body_param, status_code, total",
         [
             ("[1, 2, 3]", "[1, 2, 3, 4]", 200, 6),
             ("[1, 2, 3, 4]", "[1, 2, 3]", 200, 10),
@@ -71,14 +71,14 @@ class TestRoutes:
         ],
     )
     def test_different_list_in_parameter_and_querystring(
-        self, test_app, query_string, body_param, status_code, message
+        self, test_app, query_string, body_param, status_code, total
     ) -> None:
         with test_app.test_client() as c:
             resp = c.get(f"/total?list={query_string}", data=body_param)
         assert resp.status_code == status_code
         if status_code == 200:
             json_data = resp.get_json()
-            assert json_data["total"] == message
+            assert json_data["total"] == total
 
     def test_no_data(self, test_app) -> None:
         with test_app.test_client() as c:
